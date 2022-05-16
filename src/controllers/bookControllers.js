@@ -100,7 +100,7 @@ const getBook = async function (req, res) {
 
         // Finding books with inputted data from query and selecting required fields and sorting those books in Alphabatical order
         let findBooks = await bookModel.find(data, { isDeleted: false })
-            .select({ subcategory: 0, ISBN: 0, createdAt: 0, updatedAt: 0, __v: 0 }).sort({ "title": 1 })
+            .select({ subcategory: 0, ISBN: 0, createdAt: 0, updatedAt: 0, __v: 0 ,isDeleted:0}).sort({ "title": 1 })
         // Checking the length of finded books
         if (findBooks.length == 0) {
             return res.status(404).send({ status: false, message: "No book found" })
