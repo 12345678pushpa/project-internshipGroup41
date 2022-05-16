@@ -317,3 +317,13 @@ Refer below sample
   }
 }
 ```
+
+
+
+ // let bookKeys = ["title", "excerpt", "releasedAt", "ISBN"]
+        // for (let i = 0; i < Object.keys(req.body).length; i++) {
+        //     let keyPresent = bookKeys.includes(Object.keys(req.body)[i])
+        //     if (!keyPresent) {
+        //         return res.status(400).send({ status: false, message: "Wrong Key present" })
+        //     }
+        // }

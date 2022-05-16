@@ -131,6 +131,9 @@ const getBookById = async function (req, res) {
             return res.status(404).send({ status: false, message: "No book found" })
         }
 
+        if (findBook.isDeleted == true) {
+            return res.status(404).send({ status: false, message: "Book is already deleted" })
+        }
         // Finding reviews from db and selecting required fields
         let findReviewsData = await reviewModel.find({ bookId: bookId })
             .select({ _id: 1, bookId: 1, reviewedBy: 1, reviewedAt: 1, rating: 1, review: 1, })
@@ -201,13 +204,7 @@ const updateBook = async function (req, res) {
             return res.status(400).send({ status: false, message: "Nothing to update, please provide some updation details" })
         }
 
-        // let bookKeys = ["title", "excerpt", "releasedAt", "ISBN"]
-        // for (let i = 0; i < Object.keys(req.body).length; i++) {
-        //     let keyPresent = bookKeys.includes(Object.keys(req.body)[i])
-        //     if (!keyPresent) {
-        //         return res.status(400).send({ status: false, message: "Wrong Key present" })
-        //     }
-        // }
+       
 
         // If title key is present in request body but no data provided, it will ask to input data
         if (Object.keys(req.body).includes('title')) {

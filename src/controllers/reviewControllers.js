@@ -16,7 +16,7 @@ const postReview = async function (req, res) {
         // Finding that bookId from existing db
         let checkBookId = await bookModel.findById({ _id: bookId }).select({ISBN: 0, __v: 0})
         if (!checkBookId) {
-            return res.status(400).send({ status: false, message: "Book id is not valid" })
+            return res.status(400).send({ status: false, message: "Book id is not present" })
         }
 
         // Checking the book document for true

@@ -7,7 +7,7 @@ const validator = require("../validator/validator")
 // Authentication
 let authentication = async function (req, res, next) {
     try {
-        let token = req.headers["x-api-key"]
+    let token = req.headers["x-api-key"]
         if (!token) return res.status(404).send({ status: false, msg: "Token must be present" });
         let decodedToken = jwt.verify(token, "India");
 
